@@ -13,24 +13,19 @@ class House:
             return self.number_of_floors == other.number_of_floors
 
     def __lt__(self, other):
-
             return self.number_of_floors < other.number_of_floors
 
     def __le__(self, other):
-        if isinstance(other.number_of_floors, int) and isinstance(other, House):
-            return self.number_of_floors <= other.number_of_floors
+                return self.number_of_floors <= other.number_of_floors
 
     def __gt__(self, other):
-        if isinstance(other.number_of_floors, int) and isinstance(other, House):
-            return self.number_of_floors > other.number_of_floors
+        return self.number_of_floors > other.number_of_floors
 
     def __ge__(self, other):
-        if isinstance(other.number_of_floors, int) and isinstance(other, House):
-            return self.number_of_floors >= other.number_of_floors
+        return self.number_of_floors >= other.number_of_floors
 
     def __ne__(self, other):
-        if isinstance(other.number_of_floors, int) and isinstance(other, House):
-            return self.number_of_floors != other.number_of_floors
+        return self.number_of_floors != other.number_of_floors
 
     def __add__(self, value):
         if isinstance(value, int):
@@ -38,13 +33,10 @@ class House:
             return self
 
     def __radd__(self, value):
-        self.number_of_floors += value
-        return self
+        return self.__add__(value)
 
     def __iadd__(self, value):
-        # if isinstance(value, int):
-            self.number_of_floors += value
-            return self
+        return self.__add__(value)
 
 h1 = House('ЖК Эльбрус', 10)
 h2 = House('ЖК Акация', 20)
