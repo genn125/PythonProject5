@@ -1,8 +1,5 @@
-
-# 5.1
-
-# Атрибуты и методы объекта
-
+# 5.1 Атрибуты и методы объекта
+# Задача "Developer - не только разработчик":
 class House:
     def __init__(self, name, number_of_floors):
         self.name = name
