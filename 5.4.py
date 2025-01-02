@@ -22,9 +22,9 @@ print(House.houses_history)
 h3 = House('ЖК Матрёшки', 20)
 print(House.houses_history)
 
-# del House.houses_history[2]
+del House.houses_history[2]
 
-del h2
-del h3
+# del h2
+# del h3
 
 print(House.houses_history)
