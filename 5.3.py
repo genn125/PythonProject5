@@ -1,4 +1,4 @@
-# 5.3
+# 5.3 Перегрузка операторов
 # Задача "Нужно больше этажей":
 class House:
     def __init__(self, name, number_of_floors):
