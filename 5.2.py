@@ -1,4 +1,4 @@
-# 5.2
+# 5.2 Специальные методы классов
 # Задача "Магические здания":
 class House:
     def __init__(self, name, number_of_floors):
