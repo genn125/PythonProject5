@@ -60,7 +60,6 @@ class UrTube:
         if self.current_user is None:
             print('Войдите в аккаунт чтобы смотреть видео')
             return
-
         for i in self.videos:
             if title is i.title:
                 if self.current_user.age >= 18 and i.adult_mode:
