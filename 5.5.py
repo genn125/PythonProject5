@@ -12,6 +12,7 @@ class User:
     def __str__(self):
         return self.nickname
 
+
 class Video:
 
     def __init__(self, title, duration, time_now=0, adult_mode=False):
