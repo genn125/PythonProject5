@@ -10,7 +10,7 @@ class User:
         self.age=age
 
     def __str__(self):
-        return self.nickname
+        return self.nickname         # иначе не выводит в удобочитаемом виде <__main__.User object at 0x0.......>
 
 class Video:
 
@@ -20,53 +20,56 @@ class Video:
         self.time_now=time_now                                      # секунда остановки (изначально 0)
         self.adult_mode=adult_mode                                  # ограничение фильма по возрасту
 
+    def __str__(self):
+        return self.title     # Строка 85, иначе не выводит в удобочитаемом виде <__main__.User object at 0x0.......>
+
 class UrTube:
 # 1
     def __init__(self):
         self.users = []
         self.videos = []
         self.current_user = None
-# 3
+# 3 Регистрация
     def register(self, nickname: str, password, age):
         for i in self.users:
-            if i.nickname == nickname:
+            if i.nickname == nickname:  # 67
                 print(f'Пользователь {nickname} уже существует')
                 return
         new_user = User(nickname, password, age)
         self.current_user = new_user
         self.users.append(new_user)
-# 2
+# 2 Проверка
     def log_in (self,nickname: str, password):
         for i in self.users:
             if nickname in i and hash(password) in i:
                 self.current_user=i
-# 4
+# 4 Сброс текущего пользователя
     def log_out (self):
-        self.current_user = None # сброс текущего пользователя
-# 5
+        self.current_user = None
+# 5 Добавляет неограниченно видео (фильм)
     def add(self, *args: Video):
         for i in args:
             if i not in self.videos:
                 self.videos.append(i)
-# 6
-    def get_videos (self, search_word: str):
+# 6 Ищет видео (фильм) по поисковому слову
+    def get_videos (self, search_word):
         videos_list = []
         for i in self.videos:
             if search_word.lower() in i.title.lower():                  # с учетом регистра
                 videos_list.append(i.title)
         return videos_list
-# 7
-    def watch_video(self, title: str):
+# 7 Просмотр видео (фильма)
+    def watch_video(self, title):
         if self.current_user is None:
             print('Войдите в аккаунт чтобы смотреть видео')
             return
         for i in self.videos:
-            if title is i.title:
+            if title is i.title:                                     # что лучше == или is (строка 35)?
                 if self.current_user.age >= 18 and i.adult_mode:
                     while i.time_now < i.duration:
                         i.time_now += 1
                         print(i.time_now, end='  ')
-                        time.sleep(0.1)                                # задержки выполнения на N секунду
+                        time.sleep(0.1)                                # задержки выполнения на N (0,1) секунду
                     print('Конец видео ')
                 else:
                     print('Вам нет 18 лет, пожалуйста покиньте страницу')
@@ -76,6 +79,8 @@ v2 = Video('Для чего девушкам парень программист
 
 # Добавление видео
 ur.add(v1, v2)
+
+print(*ur.videos, end='\n\n')     #  ----------------------------------------
 
 # Проверка поиска
 print(ur.get_videos('лучший'))
